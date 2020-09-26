@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-
+import { Price } from "./Price";
+import Made from "./Made";
+import Date from "./Date";
+import Name from "./Name";
+import Description from "./Description";
 export class Product extends Component {
   constructor(props) {
     super();
@@ -7,20 +11,11 @@ export class Product extends Component {
   render() {
     return (
       <div>
-        <b>Product </b>
-        {this.props.name}
-        <br />
-        <b>price </b>
-        {this.props.price}
-        <br />
-        <b>description </b>
-        {this.props.description}
-        <br />
-        <b>made in </b>
-        {this.props.made}
-        <br />
-        <b>expiration-date </b>
-        {this.props.date}
+        <Name name="Milk" />
+        <Made made="Armenia" />
+        <Price price="1.59" />
+        <Date date="01.10.2020" />
+        <Description description="Eco" />
       </div>
     );
   }
