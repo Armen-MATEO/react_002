@@ -9,7 +9,14 @@ function App() {
   return (
     <div className="App">
       <h2>super market</h2>
-      <Product />
+      <Product
+        name="milk"
+        made="Armenia"
+        price="1.55$"
+        date="01.10.2020"
+        description="Eco"
+      />
+
       {/* <h3>Weather around the world</h3>
       <Weather country="Armenia" city="Yerevan" day="+36 C" night="+15 C" />
       <Weather country="Grenlandia" city="Nuuk" day="+5 C" night="-25 C" />

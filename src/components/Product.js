@@ -4,6 +4,7 @@ import Made from "./Made";
 import Date from "./Date";
 import Name from "./Name";
 import Description from "./Description";
+
 export class Product extends Component {
   constructor(props) {
     super();
@@ -11,11 +12,11 @@ export class Product extends Component {
   render() {
     return (
       <div>
-        <Name name="Milk" />
-        <Made made="Armenia" />
-        <Price price="1.59" />
-        <Date date="01.10.2020" />
-        <Description description="Eco" />
+        <Name text={this.props.name} />
+        <Made text={this.props.made} />
+        <Price text={this.props.price} />
+        <Date text={this.props.date} />
+        <Description text={this.props.description} />
       </div>
     );
   }

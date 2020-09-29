@@ -2,12 +2,7 @@ import React, { Component } from "react";
 
 class Description extends Component {
   render() {
-    return (
-      <div>
-        <b>description </b>
-        {this.props.description}
-      </div>
-    );
+    return <p>Description: {this.props.text}</p>;
   }
 }
 export default Description;

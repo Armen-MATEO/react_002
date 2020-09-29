@@ -2,12 +2,7 @@ import React, { Component } from "react";
 
 class Made extends Component {
   render() {
-    return (
-      <div>
-        <b>made </b>
-        {this.props.made}
-      </div>
-    );
+    return <p>made in: {this.props.text}</p>;
   }
 }
 export default Made;

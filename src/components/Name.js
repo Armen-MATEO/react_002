@@ -2,12 +2,7 @@ import React, { Component } from "react";
 
 class Name extends Component {
   render() {
-    return (
-      <div>
-        <b>name </b>
-        {this.props.name}
-      </div>
-    );
+    return <p>name: {this.props.text}</p>;
   }
 }
 export default Name;
