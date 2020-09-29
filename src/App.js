@@ -12,7 +12,7 @@ function App() {
       <Product
         name="milk"
         made="Armenia"
-        price="1.55$"
+        price="1$"
         date="01.10.2020"
         description="Eco"
       />
