@@ -14,7 +14,7 @@ export class Product extends Component {
       <div>
         <Name text={this.props.name} />
         <Made text={this.props.made} />
-        <Price dollar={this.props.price} />
+        <Price text={this.props.price} rate={this.props.rate} />
         <Date text={this.props.date} />
         <Description text={this.props.description} />
       </div>

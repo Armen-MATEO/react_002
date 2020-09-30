@@ -13,6 +13,7 @@ function App() {
         name="milk"
         made="Armenia"
         price="1$"
+        rate={490}
         date="01.10.2020"
         description="Eco"
       />

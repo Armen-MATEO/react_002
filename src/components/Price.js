@@ -2,16 +2,27 @@ import React, { Component } from "react";
 
 export class Price extends Component {
   constructor(props) {
-    super();
+    super(props);
+    this.state = {
+      price: props.text,
+      rate: props.rate,
+    };
   }
-  state = {
-    dram: "480 dram",
-  };
+
   handleClick = () => {
-    this.setState({
-      dollar: this.state.dram,
-      dram: this.props.dollar,
-    });
+    let { price, rate } = this.state;
+    let sign = price[price.length - 1];
+    if (sign === "$") {
+      let amd = parseFloat(price) * rate + "֏";
+      this.setState({
+        price: amd,
+      });
+    } else if (sign === "֏") {
+      let usd = parseFloat(price) / rate + "$";
+      this.setState({
+        price: usd,
+      });
+    }
   };
 
   render() {
@@ -19,7 +30,7 @@ export class Price extends Component {
       <div>
         <b>currency</b>
         <br />
-        <p>{this.state.dram}</p>
+        <p>{this.state.price}</p>
         <button onClick={this.handleClick}>Change the currency</button>
       </div>
     );
