@@ -3,11 +3,17 @@ import "./App.css";
 //import { Market } from "./components/Food";
 //import { Weather } from "./components/Weather";
 //import Exchange from "./components/Exchange";
-import { Product } from "./components/Product";
-
+//import { Product } from "./components/Product";
+import ToDo from "./components/ToDo";
+//import A from "./exercize/A";
 function App() {
   return (
     <div className="App">
+      <ToDo />
+
+      {/*
+      <A />
+      
       <h2>super market</h2>
       <Product
         name="milk"
@@ -16,7 +22,7 @@ function App() {
         rate={490}
         date="01.10.2020"
         description="Eco"
-      />
+      />*/}
 
       {/* <h3>Weather around the world</h3>
       <Weather country="Armenia" city="Yerevan" day="+36 C" night="+15 C" />
