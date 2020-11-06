@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import BootstrapDemo from "./exercize/BootstrapDemo";
 //import { Market } from "./components/Food";
 //import { Weather } from "./components/Weather";
 //import Exchange from "./components/Exchange";
@@ -10,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <ToDo />
-
+      <BootstrapDemo />
       {/*
       <A />
       

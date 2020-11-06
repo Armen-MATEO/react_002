@@ -1,9 +1,12 @@
-import React, { Component } from "react";
-import Task from "./Task";
+import React from "react";
+import Task from "./task/Task";
+import picture from "../assets/images/nkar.jpg";
+
+const inputStyle = {
+  border: "2px solid blue",
+  backgroundColor: "yellow",
+};
 class ToDo extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     tasks: [],
     inputValue: "",
@@ -37,12 +40,14 @@ class ToDo extends React.Component {
           placeholder="add new tasks"
           value={inputValue}
           onChange={this.handleChange}
+          style={inputStyle}
         />
 
         <input type="button" value="add" onClick={this.addTask} />
+        <img src={picture} alt="todo list" />
         <ol>
           {tasks.map((task, index) => {
-            return <Task key={index} data={task} />;
+            return <Task key={index} data={task} selected={index === 2} />;
           })}
         </ol>
       </div>
