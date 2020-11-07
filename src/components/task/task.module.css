@@ -7,3 +7,9 @@
   color: red;
   font-family: fantasy;
 }
+.input {
+  margin-bottom: 10px;
+}
+.actionButton {
+  margin: 5px;
+}
