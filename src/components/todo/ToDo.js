@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PureComponent } from "react";
 //import Task from "../task/Task";
 import styles from "./todo.module.css";
 import idGenerator from "./idGenerator.js";
@@ -14,7 +14,7 @@ import {
 } from "react-bootstrap";
 import Task from "../task/Task";
 
-class ToDo extends React.Component {
+class ToDo extends PureComponent {
   state = {
     tasks: [],
     inputValue: "",

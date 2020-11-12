@@ -1,11 +1,11 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import styles from "./task.module.css";
 //import classes from "./task.module.css";
 import { Button, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-class Task extends React.Component {
+class Task extends PureComponent {
   state = {
     checked: false,
   };
@@ -18,6 +18,9 @@ class Task extends React.Component {
     const { onCheck, data } = this.props;
     onCheck(data._id);
   };
+  componentWillUnmount() {
+    //console.log("Task componentWillUnmount");
+  }
 
   render() {
     const task = this.props.data;
