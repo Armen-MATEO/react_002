@@ -14,6 +14,7 @@ class ToDo extends PureComponent {
     selectedTasks: new Set(),
     showConfirm: false,
     editTask: null,
+    openNewTaskModal: false,
   };
 
   componentDidMount() {
@@ -57,6 +58,7 @@ class ToDo extends PureComponent {
         const tasks = [response, ...this.state.tasks];
         this.setState({
           tasks: tasks,
+          openNewTaskModal: false,
         });
       })
       .catch((error) => {
@@ -177,8 +179,20 @@ class ToDo extends PureComponent {
       });
   };
 
+  toggleNewTaskModal = () => {
+    this.setState({
+      openNewTaskModal: !this.state.openNewTaskModal,
+    });
+  };
+
   render() {
-    const { tasks, selectedTasks, showConfirm, editTask } = this.state;
+    const {
+      tasks,
+      selectedTasks,
+      showConfirm,
+      editTask,
+      openNewTaskModal,
+    } = this.state;
     const tasksArray = tasks.map((task) => {
       return (
         <Col key={task._id} xs={12} sm={6} md={4} lg={3} xl={2}>
@@ -196,9 +210,15 @@ class ToDo extends PureComponent {
     return (
       <div className={styles.toDo}>
         <Container>
-          <Row className="justify-content-center">
+          <Row className="justify-content-center text-center">
             <Col sm={10} xs={12} md={8} lg={6}>
-              <AddTask onAdd={this.addTask} disabled={!!selectedTasks.size} />
+              <Button
+                variant="outline-primary"
+                onClick={this.toggleNewTaskModal}
+                disabled={!!selectedTasks.size}
+              >
+                Add new task
+              </Button>
             </Col>
           </Row>
 
@@ -230,6 +250,10 @@ class ToDo extends PureComponent {
             onSave={this.saveTask}
             onClose={() => this.toogleEditModal(null)}
           />
+        )}
+
+        {openNewTaskModal && (
+          <AddTask onAdd={this.addTask} onClose={this.toggleNewTaskModal} />
         )}
       </div>
     );
