@@ -43,7 +43,7 @@ export default class AddTask extends Component {
   };
 
   addTask = () => {
-    const { title, description } = this.state;
+    const { title, description, date } = this.state;
     if (!title) {
       return;
     }
@@ -51,6 +51,7 @@ export default class AddTask extends Component {
     const task = {
       title,
       description,
+      date: date.toISOString().slice(0, 10),
     };
 
     this.props.onAdd(task);
@@ -81,7 +82,11 @@ export default class AddTask extends Component {
             onChange={this.handleChange}
           ></textarea>
 
-          <DatePicker selected={new Date()} onChange={this.handleDateChange} />
+          <DatePicker
+            selected={this.state.date}
+            onChange={this.handleDateChange}
+            minDate={new Date()}
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={this.addTask}>
@@ -97,6 +102,6 @@ export default class AddTask extends Component {
 }
 
 AddTask.propTypes = {
-  disabled: PropTypes.bool,
+  onClose: PropTypes.func.isRequired,
   onAdd: PropTypes.func.isRequired,
 };
