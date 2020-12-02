@@ -1,12 +1,12 @@
 import React, { PureComponent } from "react";
 import styles from "./todo.module.css";
-import AddTask from "../AddTask/AddTask";
-import Confirm from "../Confirm";
-import EditTaskModal from "../EditTaskModal/EditTaskModal";
+import AddTask from "../../AddTask/AddTask";
+import Confirm from "../../Confirm";
+import EditTaskModal from "../../EditTaskModal/EditTaskModal";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import Task from "../task/Task";
+import Task from "../../task/Task";
 
 class ToDo extends PureComponent {
   state = {
