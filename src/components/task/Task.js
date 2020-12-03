@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import { formatDate } from "../../Helpers/utils";
+import { Link } from "react-router-dom";
 
 class Task extends PureComponent {
   state = {
@@ -30,14 +31,17 @@ class Task extends PureComponent {
       <Card className={`${styles.task} ${checked ? styles.selected : ""}`}>
         <Card.Body>
           <input type="checkbox" onClick={this.handleCheck} />
-          <Card.Title>{task.title}</Card.Title>
-          <Card.Text>{task.description}</Card.Text>
+          <Card.Title>
+            <Link to={`/task/${task._id}`}>{task.title}</Link>
+          </Card.Title>
+          <Card.Text>Description: {task.description}</Card.Text>
           <Card.Text className={styles.date}>
             Date: {formatDate(task.date)}
           </Card.Text>
           <Card.Text className={styles.date}>
             Created at: {formatDate(task.created_at)}
           </Card.Text>
+
           <Button
             variant="warning"
             className={styles.actionButton}
