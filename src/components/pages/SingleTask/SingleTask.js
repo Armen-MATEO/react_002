@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {formatDate} from '../../../helpers/utils';
+import {formatDate} from '../../../Helpers/utils';
 import Spinner from '../../Spinner/Spinner';
 
 export default class SingleTask extends PureComponent {
