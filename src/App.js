@@ -7,6 +7,7 @@ import SingleTask from "./components/pages/SingleTask/SingleTask";
 import NotFound from "./components/pages/NotFound/NotFound";
 import NavMenu from "./components/NavMenu/NavMenu";
 import { Route, Switch, Redirect } from "react-router-dom";
+import RefDemo from './exercize/RefDemo';
 
 function App() {
 
@@ -23,6 +24,12 @@ function App() {
       path: '/task/:id',
       component: SingleTask
     },
+    {
+      path: '/demo',
+      component: RefDemo
+    },
+
+
     {
       path: '/404',
       component: NotFound
