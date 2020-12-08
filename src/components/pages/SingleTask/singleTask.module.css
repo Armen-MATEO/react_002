@@ -1,0 +1,32 @@
+.description{
+    
+    color: rgba(209, 22, 131, 0.685);
+    font-family: cursive;
+    font-size: medium;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.interval{
+    margin: 10px;
+    margin-left: 50px;
+
+}
+.date{
+    font-family: emoji;
+    color: rgb(85, 5, 9);
+    font-family: cursive;
+    margin-left: 10px;
+}
+.at{
+    font-family: fantasy;
+    color: rgb(200, 240, 22);
+    margin-left: 10px;
+}
+.title{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgba(177, 21, 55, 0.931);
+    margin-left: 50px;
+}
+.card{
+    background-color: rgb(190, 190, 165);
+    }
