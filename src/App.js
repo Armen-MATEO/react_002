@@ -8,54 +8,58 @@ import NotFound from "./components/pages/NotFound/NotFound";
 import NavMenu from "./components/NavMenu/NavMenu";
 import { Route, Switch, Redirect } from "react-router-dom";
 //import RefDemo from './exercize/RefDemo';
-import LifeCycles from './exercize/lifeCycles/LifeCycles';
+import LifeCycles from "./exercize/lifeCycles/LifeCycles";
+import Contact from "./components/pages/Contacts/Contact";
 
 function App() {
-
   const routes = [
     {
-      path: '/',
-      component: ToDo
+      path: "/",
+      component: ToDo,
     },
     {
-      path: '/about',
-      component: About
+      path: "/about",
+      component: About,
     },
     {
-      path: '/task/:id',
-      component: SingleTask
+      path: "/task/:id",
+      component: SingleTask,
     },
+
     {
-      path: '/demo',
+      path: "/contact",
+      component: Contact,
+    },
+
+    {
+      path: "/demo",
       /*component: RefDemo*/
-      component: LifeCycles
+      component: LifeCycles,
     },
 
-
     {
-      path: '/404',
-      component: NotFound
-    }
-      ];
-
-
+      path: "/404",
+      component: NotFound,
+    },
+  ];
 
   return (
     <div className="App">
       <NavMenu />
 
       <Switch>
-      {  routes.map((item, index) => <Route 
-          path={item.path}
-         exact 
-         component={item.component} 
-          key={index}
-         />) }
-      <Redirect to='/404' />
-    </Switch>
+        {routes.map((item, index) => (
+          <Route
+            path={item.path}
+            exact
+            component={item.component}
+            key={index}
+          />
+        ))}
+        <Redirect to="/404" />
+      </Switch>
 
-
- {/*     <Switch>
+      {/*     <Switch>
         <Route path="/" exact component={ToDo} />
         <Route path="/about" exact component={About} />
         <Route path="/task/:id" exact component={SingleTask} />

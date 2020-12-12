@@ -1,96 +1,107 @@
-import React, {useState, useEffect, memo, useRef} from 'react';
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  memo,
+  useRef,
+} from "react";
 
-function Hooks(){
+function Hooks() {
+  const [counter, setCounter] = useState(0);
+  const [text, setText] = useState("");
 
-const [counter, setCounter] = useState(0);
-const [text, setText] = useState('');
+  const [values, setValues] = useState({
+    val1: "",
+    val2: "",
+  });
 
-const [values, setValues] = useState({
-    val1: '',
-    val2: ''
-});
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
+  const increment = () => {
+    setCounter(counter + 1);
+  };
 
-const increment = ()=>{
-    setCounter(counter+1);
-
-};
-
-const handleChange = (event)=>{
-
+  const handleChange = (event) => {
     setText(event.target.value);
-};
+  };
 
-const changeValue = (event)=>{
+  const changeValue = (event) => {
     setValues({
-        ...values,
-        val1: event.target.value
+      ...values,
+      val1: event.target.value,
     });
+  };
 
-};
+  // componentDidMount, componentDidUpdate
+  useEffect(() => {
+    console.log("useEffect componentDidUpdate");
+  });
 
-// componentDidUpdate
-useEffect(()=>{
-    console.log('useEffect componentDidUpdate');
-});
+  // componentDidUpdate
+  useEffect(() => {
+    console.log("useEffect counter");
+  }, [counter, text]);
 
-// componentDidUpdate 
-useEffect(()=>{
-    console.log('useEffect counter');
-}, [counter, text]);
+  //componentDidMount, componentWillUnmount
+  useEffect(() => {
+    console.log("useEffect componentDidMount++++++++++");
 
+    document.body.onresize = (event) => {
+      const size = {
+        width: event.target.innerWidth,
+        height: event.target.innerHeight,
+      };
 
-//componentDidMount, componentWillUnmount
-useEffect(()=>{
-    console.log('useEffect componentDidMount');
+      setWindowSize(size);
+    };
 
-    return ()=>{
-        console.log('useEffect componentWillUnmount');
-        };
+    return () => {
+      console.log("useEffect componentWillUnmount");
 
-}, []);
+      document.body.onresize = null;
+    };
+  }, []);
 
-//componentWillUnmount
-// useEffect(()=>{
-//     console.log('useEffect');
+  useEffect(() => {
+    console.log("useEffect from size");
+  }, [windowSize]);
 
-//     return ()=>{
-//     console.log('useEffect componentWillUnmount');
-//     };
-// }, []);
+  //componentWillUnmount
+  // useEffect(()=>{
+  //     console.log('useEffect');
 
-const inputRef = useRef(null);
-console.log("🚀 inputRef", inputRef);
+  //     return ()=>{
+  //     console.log('useEffect componentWillUnmount');
+  //     };
+  // }, []);
+  useLayoutEffect(() => {});
 
-    return (
-        <div>
-        <h4>Welcome to React Hooks!</h4>
-        <h3>{counter}</h3>
+  const inputRef = useRef(null);
+  console.log("🚀 inputRef", inputRef);
 
-        <button
-        onClick = {increment}
-        >
-        Click me
-        </button>
+  return (
+    <div>
+      <h4>Welcome to React Hooks!</h4>
+      <h3>{counter}</h3>
 
-        <div>
-        <input 
-        type = 'text'
-        onChange={handleChange}
-        />
+      <button onClick={increment}>Click me</button>
+
+      <div>
+        <input type="text" onChange={handleChange} />
         <p>{text}</p>
-        </div>
+      </div>
 
-        <div>
-        <input 
-        type = 'text'
-        ref = {inputRef}
-        onChange={changeValue}
-        />
+      <div>
+        <input type="text" ref={inputRef} onChange={changeValue} />
 
-        </div>
-        </div>
-    );
+        <h4>Width: {windowSize.width}</h4>
+        <h4>Height: {windowSize.height}</h4>
+      </div>
+    </div>
+  );
 }
 
 export default memo(Hooks);
