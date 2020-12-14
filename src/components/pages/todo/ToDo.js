@@ -6,7 +6,8 @@ import EditTaskModal from "../../EditTaskModal/EditTaskModal";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import Task from "../../task/Task";
+//import Task from "../../task/Task";
+import Task1 from '../../task/Task1';
 
 class ToDo extends PureComponent {
   state = {
@@ -196,7 +197,7 @@ class ToDo extends PureComponent {
     const tasksArray = tasks.map((task) => {
       return (
         <Col key={task._id} xs={12} sm={6} md={4} lg={3} xl={2}>
-          <Task
+          <Task1
             data={task}
             onRemove={this.removeTask}
             onCheck={this.handleCheck}

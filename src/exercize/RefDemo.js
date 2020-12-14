@@ -1,5 +1,6 @@
 import React, { Component, createRef } from 'react';
 
+
 export default class RefDemo extends Component {
 constructor(props){
     super(props);
@@ -50,6 +51,11 @@ handelClick = ()=>{
                 onClick = {this.handelClick}
                 >
                 Print values
+                </button>
+                <button
+                // onClick = {this.handelClick}
+                >
+                focus
                 </button>
             </div>
         );

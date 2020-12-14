@@ -6,11 +6,23 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default class AddTask extends Component {
-  state = {
-    title: "",
-    description: "",
-    date: new Date(),
+  constructor(props){
+    super(props);
+    this.state = {
+      title: "",
+      description: "",
+      date: new Date(),
+  
+  }
+  this.titleRef = React.createRef(null);
   };
+ 
+  componentDidMount(){
+    this.titleRef.current.focus();
+}
+
+
+
 
   handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -69,6 +81,7 @@ export default class AddTask extends Component {
           <FormControl
             placeholder="Title"
             name="title"
+            ref = {this.titleRef}
             /* onChange={(event)=> this.handleChange(event, 'title')} */
             onChange={this.handleChange}
             onKeyDown={this.handleKeyDown}
