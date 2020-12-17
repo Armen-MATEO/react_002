@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Reset from './ResetCounterButton';
+import Reset from "./ResetCounterButton";
 
 class ChangeCounter extends Component {
   render() {
@@ -9,22 +9,19 @@ class ChangeCounter extends Component {
         <button onClick={() => this.props.onChangeValue(-1)}>-</button>
         <button onClick={() => this.props.onChangeValue(1)}>+</button>
         <div>
-          <br/>
+          <br />
           <button onClick={() => this.props.onChangeValue(-5)}>-5</button>
           <button onClick={() => this.props.onChangeValue(+5)}>+5</button>
         </div>
-        <br/>
+        <br />
         <div>
-        <button onClick={() => this.props.onChangeValue(-10)}>-10</button>
-        <button onClick={() => this.props.onChangeValue(+10)}>+10</button>
+          <button onClick={() => this.props.onChangeValue(-10)}>-10</button>
+          <button onClick={() => this.props.onChangeValue(+10)}>+10</button>
         </div>
-        <br/>
+        <br />
         <div>
-        <Reset/>
+          <Reset />
         </div>
-        
-        
-        
       </div>
     );
   }
@@ -39,8 +36,5 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
-
-     
 
 export default connect(null, mapDispatchToProps)(ChangeCounter);

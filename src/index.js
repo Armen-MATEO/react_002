@@ -4,43 +4,44 @@ import "./index.css";
 //import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
-import Counter from './exercize/Counter';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import Counter from "./exercize/Counter";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
 const defaultState = {
   count: 0,
-  text: 'hello from Redux'
+  text: "hello from Redux",
 };
 
 const reducer = (state = defaultState, action) => {
-  console.log('action', action)
-  console.log('state', state)
+  console.log("action", action);
+  console.log("state", state);
 
-switch(action.type){
-  case 'CHANGE_VALUE': {
-    return {
-      ...state,
-      count: state.count + action.value
-    };
-  }
-
-  case 'CHANGE_MESSAGE': {
-    return {
-      ...state,
-      text: action.message
+  switch (action.type) {
+    case "CHANGE_VALUE": {
+      return {
+        ...state,
+        count: state.count + action.value,
+      };
     }
-  }
 
- case "RESET_VALUE" :{
-   return{ 
-      ...state,
-     count:  action.value=0
+    case "CHANGE_MESSAGE": {
+      return {
+        ...state,
+        text: action.message,
+      };
     }
- }
 
-  default: return state;
-}
+    case "RESET_VALUE": {
+      return {
+        ...state,
+        count: (action.value = 0),
+      };
+    }
+
+    default:
+      return state;
+  }
 
   // if (action.type === 'CHANGE_VALUE') {
   //   return {
@@ -62,12 +63,11 @@ switch(action.type){
 
 const store = createStore(reducer);
 
-
 ReactDOM.render(
   //<React.StrictMode>
   //  <BrowserRouter>
   //    <App />
-   // </BrowserRouter>
+  // </BrowserRouter>
   //</React.StrictMode>,
 
   <React.StrictMode>
@@ -77,8 +77,6 @@ ReactDOM.render(
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
-
-
 
   document.getElementById("root")
 );
