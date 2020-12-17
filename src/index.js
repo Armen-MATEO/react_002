@@ -32,6 +32,13 @@ switch(action.type){
     }
   }
 
+ case "RESET_VALUE" :{
+   return{ 
+      ...state,
+     count:  action.value=0
+    }
+ }
+
   default: return state;
 }
 
