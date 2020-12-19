@@ -35,7 +35,7 @@ const reducer = (state = defaultState, action) => {
     case "RESET_VALUE": {
       return {
         ...state,
-        count: (action.value = 0),
+        count: action.value,
       };
     }
 

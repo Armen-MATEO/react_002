@@ -8,10 +8,12 @@ import EditTaskModal from "../../EditTaskModal/EditTaskModal";
 import { Container, Row, Col, Button } from "react-bootstrap";
 //import Task from "../../task/Task";
 import Task1 from '../../task/Task1';
+import {connect} from 'react-redux';
+import {getTasks} from '../../../store/actions';
 
 class ToDo extends PureComponent {
   state = {
-    tasks: [],
+    
     selectedTasks: new Set(),
     showConfirm: false,
     editTask: null,
@@ -19,25 +21,7 @@ class ToDo extends PureComponent {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3001/task", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.error) {
-          throw response.error;
-        }
-
-        this.setState({
-          tasks: response,
-        });
-      })
-      .catch((error) => {
-        console.log("ToDo -> error", error);
-      });
+    this.props.getTasks();
   }
 
   addTask = (data) => {
@@ -187,14 +171,9 @@ class ToDo extends PureComponent {
   };
 
   render() {
-    const {
-      tasks,
-      selectedTasks,
-      showConfirm,
-      editTask,
-      openNewTaskModal,
-    } = this.state;
-    const tasksArray = tasks.map((task) => {
+    const { selectedTasks, showConfirm, editTask, openNewTaskModal } = this.state;
+
+        const tasksArray = this.props.tasks.map((task) => {
       return (
         <Col key={task._id} xs={12} sm={6} md={4} lg={3} xl={2}>
           <Task1
@@ -261,4 +240,22 @@ class ToDo extends PureComponent {
   }
 }
 
-export default ToDo;
+const mapStateToProps = (state)=>{
+  return {
+      tasks: state.tasks
+  };
+}
+
+// const mapDispatchToProps = (dispatch)=>{
+//     return {
+//         getTasks: ()=>{
+//             dispatch({})
+//         }
+//     };
+// }
+
+const mapDispatchToProps = {
+  getTasks: getTasks
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDo);
