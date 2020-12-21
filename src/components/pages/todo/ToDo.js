@@ -9,7 +9,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 //import Task from "../../task/Task";
 import Task1 from '../../task/Task1';
 import {connect} from 'react-redux';
-import {getTasks} from '../../../store/actions';
+import {getTasks} from '../../../store/action';
 
 class ToDo extends PureComponent {
   state = {

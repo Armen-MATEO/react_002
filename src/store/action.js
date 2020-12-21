@@ -1,4 +1,4 @@
-import request from '../helpers/request';
+import request from '../Helpers/request';
 
 //action creator
 export function getTasks(){
