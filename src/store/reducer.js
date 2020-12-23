@@ -1,24 +1,24 @@
 import * as actionTypes from './actionTypes';
 
 const defaultState = {
-  tasks: [],
-  errorMessage: null,
-  successMessage: null,
-  addTaskSuccess: false,
-  loading: false,
-};
-
+    tasks: [],
+    errorMessage: null,
+    successMessage: null,
+    addTaskSuccess: false,
+    loading: false
+  };
+  
 const reducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case  actionTypes.LOADING: {
+  switch(action.type){
+
+    case actionTypes.LOADING: {
       return {
         ...state,
-        tasks: action.tasks,
         loading: true,
         addTaskSuccess: false,
         errorMessage: null,
         successMessage: null,
-      };
+      }
     }
 
     case actionTypes.ERROR: {
@@ -28,7 +28,6 @@ const reducer = (state = defaultState, action) => {
       loading: false
 
       }
-
     }
 
     case actionTypes.GET_TASKS_SUCCESS: {
@@ -65,8 +64,6 @@ const reducer = (state = defaultState, action) => {
     default: return state;
   }
 
-   
-  }
+}
 
-
-export { reducer };
+export {reducer};
