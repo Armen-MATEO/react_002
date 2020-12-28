@@ -7,6 +7,7 @@ import EditTaskModal from "../../EditTaskModal/EditTaskModal";
 import styles from "./todo.module.css";
 import { connect } from "react-redux";
 import { getTasks, removeSelected } from "../../../store/action";
+import Search from "../../Search/Search";
 
 class ToDo extends PureComponent {
   state = {
@@ -99,6 +100,7 @@ class ToDo extends PureComponent {
     return (
       <div className={styles.toDo}>
         <Container>
+          <Search />
           <Row className="justify-content-center text-center">
             <Col sm={10} xs={12} md={8} lg={6}>
               <Button

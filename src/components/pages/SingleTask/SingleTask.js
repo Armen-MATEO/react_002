@@ -24,6 +24,10 @@ class SingleTask extends PureComponent {
         openEditModal: false,
       });
     }
+
+    if (!prevProps.removeTaskSuccess && this.props.removeTaskSuccess) {
+      this.props.history.push("/");
+    }
   }
 
   toogleEditModal = () => {
@@ -62,8 +66,7 @@ class SingleTask extends PureComponent {
               variant="danger"
               // className={styles.actionButton}
               onClick={() => {
-                this.props.removeTask(task._id);
-                this.props.history.push("/");
+                this.props.removeTask(task._id, "single");
               }}
             >
               <FontAwesomeIcon icon={faTrash} />
@@ -89,6 +92,7 @@ const mapStateToProps = (state) => {
   return {
     task: state.task,
     editTaskSuccess: state.editTaskSuccess,
+    removeTaskSuccess: state.removeTaskSuccess,
   };
 };
 
