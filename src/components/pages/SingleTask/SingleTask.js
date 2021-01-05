@@ -8,6 +8,8 @@ import styles from "./singleTask.module.css";
 import { connect } from "react-redux";
 import { getSingleTask, removeTask } from "../../../store/action";
 
+import singletask from "../../../assets/singletask.jpg";
+
 class SingleTask extends PureComponent {
   state = {
     openEditModal: false,
@@ -42,48 +44,58 @@ class SingleTask extends PureComponent {
 
     return (
       <>
-        {!!task ? (
-          <div className={styles.card}>
-            <h2 className={styles.title}>{task.title}</h2>
-            <p className={styles.description}>
-              Description: {task.description}
-            </p>
-            <p className={styles.date}>Date: {formatDate(task.date)}</p>
-            <p className={styles.at}>
-              Created at: {formatDate(task.created_at)}
-            </p>
+        <div className={styles.wraper}>
+          <div>
+            {!!task ? (
+              <div
+                className={styles.card}
+                style={{ backgroundImage: `url(${singletask})` }}
+              >
+                <h2 className={styles.title}>{task.title}</h2>
+                <p className={styles.description}>
+                  Description: {task.description}
+                </p>
+                <p className={styles.date}>Date: {formatDate(task.date)}</p>
+                <p className={styles.at}>
+                  Created at: {formatDate(task.created_at)}
+                </p>
 
-            <Button
-              className={styles.interval}
-              variant="warning"
-              // className={styles.actionButton}
-              onClick={this.toogleEditModal}
-            >
-              <FontAwesomeIcon icon={faEdit} />
-            </Button>
+                <Button
+                  className={styles.interval}
+                  variant="warning"
+                  // className={styles.actionButton}
+                  onClick={this.toogleEditModal}
+                >
+                  <FontAwesomeIcon icon={faEdit} />
+                </Button>
 
-            <Button
-              variant="danger"
-              // className={styles.actionButton}
-              onClick={() => {
-                this.props.removeTask(task._id, "single");
-              }}
-            >
-              <FontAwesomeIcon icon={faTrash} />
-            </Button>
+                <Button
+                  variant="danger"
+                  // className={styles.actionButton}
+                  onClick={() => {
+                    this.props.removeTask(task._id, "single");
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </Button>
+              </div>
+            ) : (
+              <h3>Sorry, No task found !!!</h3>
+            )}
+
+            {openEditModal && (
+              <EditTaskModal
+                data={task}
+                from="single"
+                onSave={this.saveTask}
+                onClose={this.toogleEditModal}
+              />
+            )}
           </div>
-        ) : (
-          <h3>Sorry, No task found !!!</h3>
-        )}
-
-        {openEditModal && (
-          <EditTaskModal
-            data={task}
-            from="single"
-            onSave={this.saveTask}
-            onClose={this.toogleEditModal}
-          />
-        )}
+          <div>
+            <img src={singletask} alt="singletask" width="100%" z-index={-1} />
+          </div>
+        </div>
       </>
     );
   }

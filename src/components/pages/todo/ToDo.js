@@ -8,6 +8,7 @@ import styles from "./todo.module.css";
 import { connect } from "react-redux";
 import { getTasks, removeSelected } from "../../../store/action";
 import Search from "../../Search/Search";
+import Footer from "./Footer";
 
 class ToDo extends PureComponent {
   state = {
@@ -104,7 +105,7 @@ class ToDo extends PureComponent {
           <Row className="justify-content-center text-center">
             <Col sm={10} xs={12} md={8} lg={6}>
               <Button
-                variant="outline-primary"
+                variant="primary"
                 onClick={this.toggleNewTaskModal}
                 disabled={!!selectedTasks.size}
               >
@@ -114,7 +115,7 @@ class ToDo extends PureComponent {
           </Row>
 
           <Row>{tasksArray}</Row>
-          <Row className="justify-content-center">
+          <Row className="justify-content-center text-center position: center">
             <Col xs={4}>
               <Button
                 variant="outline-danger"
@@ -143,6 +144,7 @@ class ToDo extends PureComponent {
         )}
 
         {openNewTaskModal && <AddTask onClose={this.toggleNewTaskModal} />}
+        <Footer />
       </div>
     );
   }

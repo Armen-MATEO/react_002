@@ -1,9 +1,27 @@
-.textarea{
-    width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+.textarea {
+  width: 38%;
+  border-radius: 20px;
+  margin-left: 20px;
   margin-top: 6px;
   margin-bottom: 10px;
 }
-
+.input {
+  margin: 20px;
+  border-radius: 20px;
+}
+.img {
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+}
+.button {
+  border-radius: 10px;
+  width: 17%;
+  margin-left: 46px;
+  position: absolute;
+  margin-top: 17px;
+  background-color:rgb(236, 223, 206);
+}
+.color {
+  background-color: #ccc5ab;
+}

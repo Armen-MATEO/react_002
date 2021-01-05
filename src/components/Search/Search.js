@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+
 import {
+  Accordion,
+  Card,
   Navbar,
   Nav,
   NavDropdown,
@@ -11,6 +14,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { connect } from "react-redux";
 import { getTasks } from "../../store/action";
+import styles from "./search.module.css";
 
 const statusOptions = [
   {
@@ -114,7 +118,7 @@ function Search(props) {
 
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="secondary" expand="lg">
         <Navbar.Brand>Search/Sort/Filter</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -155,28 +159,42 @@ function Search(props) {
               onChange={(event) => setSearch(event.target.value)}
               className="mr-sm-2"
             />
-            <Button variant="outline-success" onClick={handleSubmit}>
+            <Button variant="success" onClick={handleSubmit}>
               Search
             </Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>
-      {dateOptions.map((item, index) => {
-        return (
-          <div key={index}>
-            <span>{item.label} </span>
-            <DatePicker
-              selected={dates[item.value]}
-              onChange={(date) => {
-                setDates({
-                  ...dates,
-                  [item.value]: date,
-                });
-              }}
-            />
-          </div>
-        );
-      })}
+      <Accordion defaultActiveKey="1">
+        <Card>
+          <Card.Header>
+            <Accordion.Toggle as={Button} variant="secondary" eventKey="0">
+              Enhanced search
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="0">
+            <Card.Body>
+              {dateOptions.map((item, index) => {
+                return (
+                  <div key={index} style={{ backgroundColor: "lightgray" }}>
+                    <div>{item.label}</div>
+                    <DatePicker
+                      className={styles.datePicker}
+                      selected={dates[item.value]}
+                      onChange={(date) => {
+                        setDates({
+                          ...dates,
+                          [item.value]: date,
+                        });
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+      </Accordion>
     </>
   );
 }
