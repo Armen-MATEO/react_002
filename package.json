@@ -23,7 +23,6 @@
     "react-social-icons": "^4.1.0",
     "react-toastify": "^6.2.0",
     "redux": "^4.0.5",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -48,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6"
   }
 }

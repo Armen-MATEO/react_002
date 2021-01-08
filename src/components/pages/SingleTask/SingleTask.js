@@ -2,13 +2,22 @@ import React, { PureComponent } from "react";
 import { formatDate } from "../../../Helpers/utils";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faEdit,
+  faCheck,
+  faHistory,
+} from "@fortawesome/free-solid-svg-icons";
 import EditTaskModal from "../../EditTaskModal/EditTaskModal";
 import styles from "./singleTask.module.css";
 import { connect } from "react-redux";
-import { getSingleTask, removeTask } from "../../../store/action";
-
+import {
+  getSingleTask,
+  removeTask,
+  changeTaskStatus,
+} from "../../../store/action";
 import singletask from "../../../assets/singletask.jpg";
+import { trimString } from "../../../Helpers/utils";
 
 class SingleTask extends PureComponent {
   state = {
@@ -52,13 +61,50 @@ class SingleTask extends PureComponent {
                 /*style={{ backgroundImage: `url(${singletask})` }}*/
               >
                 <h2 className={styles.title}>{task.title}</h2>
-                <p className={styles.description}>
+                {/*<p className={styles.description}>
                   Description: {task.description}
+            </p>*/}
+                <p className={styles.description}>
+                  Description: {trimString(task.description, 60)}
                 </p>
+                <p className={styles.status}>Status: {task.status}</p>
+
                 <p className={styles.date}>Date: {formatDate(task.date)}</p>
                 <p className={styles.at}>
                   Created at: {formatDate(task.created_at)}
                 </p>
+
+                {task.status === "active" ? (
+                  <Button
+                    variant="success"
+                    className={styles.space}
+                    disabled={!task.status}
+                    onClick={() =>
+                      this.props.changeTaskStatus(
+                        task._id,
+                        { status: "done" },
+                        "single"
+                      )
+                    }
+                  >
+                    <FontAwesomeIcon icon={faCheck} />
+                  </Button>
+                ) : (
+                  <Button
+                    className={styles.space}
+                    variant="warning"
+                    //disabled ={!task.status}
+                    onClick={() =>
+                      this.props.changeTaskStatus(
+                        task._id,
+                        { status: "active" },
+                        "single"
+                      )
+                    }
+                  >
+                    <FontAwesomeIcon icon={faHistory} />
+                  </Button>
+                )}
 
                 <Button
                   className={styles.interval}
@@ -111,6 +157,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   getSingleTask,
   removeTask,
+  changeTaskStatus,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleTask);

@@ -1,8 +1,9 @@
-.text{
-   font-style: oblique;
-   margin-left: 20px;
+.text {
+  font-family: cursive;
+  margin-left: 20px;
+  font-weight: 500;
+  font-size: medium;
 }
-.image{
-    width:90%;
-    
+.image {
+  width: 90%;
 }
