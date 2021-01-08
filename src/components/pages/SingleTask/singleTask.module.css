@@ -1,32 +1,36 @@
-.description{
-    
-    color: rgba(209, 22, 131, 0.685);
-    font-family: cursive;
-    font-size: medium;
-    font-size: 20px;
-    margin-left: 10px;
+.description {
+  color: rgba(19, 1, 11, 0.685);
+  font-family: cursive;
+  font-size: medium;
+  font-size: 20px;
+  text-align: center;
 }
-.interval{
-    margin: 10px;
-    margin-left: 50px;
+.interval {
+  margin: 20px;
+  margin-left: 40px;
+}
+.date {
+  font-family: emoji;
+  color: rgb(85, 5, 9);
+  font-family: cursive;
+  text-align: center;
+}
+.at {
+  font-family: fantasy;
+  color: rgb(200, 240, 22);
+  text-align: center;
+}
+.title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: rgba(39, 26, 29, 0.931);
+  text-align: center;
+  margin-top: 10px;
+}
 
-}
-.date{
-    font-family: emoji;
-    color: rgb(85, 5, 9);
-    font-family: cursive;
-    margin-left: 10px;
-}
-.at{
-    font-family: fantasy;
-    color: rgb(200, 240, 22);
-    margin-left: 10px;
-}
-.title{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: rgba(177, 21, 55, 0.931);
-    margin-left: 50px;
+.wraper {
+  display: grid;
+  grid-gap: 1em;
 }
 .card{
-    background-color: rgb(190, 190, 165);
-    }
+  background-color: #b87bc0;
+}

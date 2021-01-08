@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styles from "./navMenuStyle.module.css";
+import { SocialIcon } from "react-social-icons";
 
 export default function NavMenu() {
   return (
@@ -36,6 +37,22 @@ export default function NavMenu() {
           </NavLink>
         </Nav>
       </Navbar.Collapse>
+    
+      <div >
+        <SocialIcon url="https://www.youtube.com/" target="_blank" />
+      </div>
+      <div>
+        <SocialIcon url="https://www.facebook.com/" target="_blank" />
+      </div>
+      <div>
+        <SocialIcon url="https://www.instagram.com/" target="_blank" />
+      </div>
+      
+      
+      <div >
+        <SocialIcon url="https://www.twitter.com/" target="_blank"  />
+      </div>
+      
     </Navbar>
   );
 }

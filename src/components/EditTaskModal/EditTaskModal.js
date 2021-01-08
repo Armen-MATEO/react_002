@@ -1,11 +1,13 @@
 import React, { Component, createRef } from "react";
 import { Button, Modal, FormControl } from "react-bootstrap";
 import PropTypes from "prop-types";
-import styles from "./editTaskModalStyle.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import styles from "./editTaskModalStyle.module.css";
+import { connect } from "react-redux";
+import { editTask } from "../../store/action";
 
-export default class EditTaskModal extends Component {
+class EditTaskModal extends Component {
   constructor(props) {
     super(props);
     const { date } = props.data;
@@ -14,9 +16,11 @@ export default class EditTaskModal extends Component {
       ...props.data,
       date: date ? new Date(date) : new Date(),
     };
+
     this.titleRef = createRef(null);
   }
-  componentDidMount(){
+
+  componentDidMount() {
     this.titleRef.current.focus();
   }
 
@@ -40,7 +44,7 @@ export default class EditTaskModal extends Component {
       date: date.toISOString().slice(0, 10),
     };
 
-    this.props.onSave(editedTask);
+    this.props.editTask(editedTask, this.props.from);
   };
 
   handleDateChange = (date) => {
@@ -65,6 +69,7 @@ export default class EditTaskModal extends Component {
             value={title}
             onChange={this.handleChange}
             onKeyDown={this.handleKeyDown}
+            ref={this.titleRef}
           />
 
           <textarea
@@ -77,10 +82,13 @@ export default class EditTaskModal extends Component {
           ></textarea>
 
           <DatePicker
+                     
+
             selected={date}
             onChange={this.handleDateChange}
             startDate={new Date()}
             minDate={new Date()}
+            
           />
         </Modal.Body>
         <Modal.Footer>
@@ -98,6 +106,11 @@ export default class EditTaskModal extends Component {
 
 EditTaskModal.propTypes = {
   data: PropTypes.object.isRequired,
-  onSave: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 };
+
+const mapDispatchToProps = {
+  editTask,
+};
+
+export default connect(null, mapDispatchToProps)(EditTaskModal);

@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card,   } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import styles from './task.module.css';
@@ -8,6 +8,7 @@ import {formatDate} from '../../Helpers/utils';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {removeTask} from '../../store/action';
+
 
 class Task extends PureComponent{
 state = {
@@ -36,6 +37,7 @@ handleCheck = ()=>{
                             type='checkbox' 
                             onClick = {this.handleCheck}
                             />
+                            
                             <Card.Title>
                             <Link to={`/task/${task._id}`}>
                             {task.title}

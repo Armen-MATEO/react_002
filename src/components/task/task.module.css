@@ -1,5 +1,8 @@
 .task {
   margin: 10px auto;
+  background-color: rgb(165, 224, 241);
+  border-style: dashed;
+  
 }
 
 .selected {

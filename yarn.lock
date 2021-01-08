@@ -7071,6 +7071,11 @@
     "inherits" "^2.0.1"
     "safe-buffer" "^5.1.2"
 
+"mdbootstrap@^4.19.2":
+  "integrity" "sha512-a+LwPflYRYwlmYKTvftW0X7SfOMrRZ02qZjrssNko1lPU/HR5JRFc1uwa3Dmmw+6TwsYH760waqdghBFrucpOw=="
+  "resolved" "https://registry.npmjs.org/mdbootstrap/-/mdbootstrap-4.19.2.tgz"
+  "version" "4.19.2"
+
 "mdn-data@2.0.12":
   "integrity" "sha512-ULbAlgzVb8IqZ0Hsxm6hHSlQl3Jckst2YEQS7fODu9ilNWy2LvcoSY7TRFIktABP2mdppBioc66va90T+NUs8Q=="
   "resolved" "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.12.tgz"
@@ -9255,6 +9260,13 @@
   optionalDependencies:
     "fsevents" "2.1.2"
 
+"react-social-icons@^4.1.0":
+  "integrity" "sha512-wbwSbyS4QWjpL6U+GFZDBrE5Ao8px0QkRgo0XkxDHF2LNRsFNErSDnIPKiowhQ7t7IyrSA2HYrEw7ETgpVTg+Q=="
+  "resolved" "https://registry.npmjs.org/react-social-icons/-/react-social-icons-4.1.0.tgz"
+  "version" "4.1.0"
+  dependencies:
+    "prop-types" "^15.6.2"
+
 "react-toastify@^6.2.0":
   "integrity" "sha512-XpjFrcBhQ0/nBOL4syqgP/TywFnOyxmstYLWgSQWcj39qpp+WU4vPt3C/ayIDx7RFyxRWfzWTdR2qOcDGo7G0w=="
   "resolved" "https://registry.npmjs.org/react-toastify/-/react-toastify-6.2.0.tgz"
@@ -9274,7 +9286,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^16.13.1", "react@^16.8.3 || ^17", "react@>=16":
+"react@^16.13.1", "react@^16.8.3 || ^17", "react@>=16", "react@15.x.x || 16.x.x":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"
