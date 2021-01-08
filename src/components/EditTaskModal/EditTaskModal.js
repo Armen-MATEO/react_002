@@ -82,10 +82,13 @@ class EditTaskModal extends Component {
           ></textarea>
 
           <DatePicker
+                     
+
             selected={date}
             onChange={this.handleDateChange}
             startDate={new Date()}
             minDate={new Date()}
+            
           />
         </Modal.Body>
         <Modal.Footer>

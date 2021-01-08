@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 import {
-  Accordion,
-  Card,
   Navbar,
   Nav,
   NavDropdown,
@@ -14,7 +12,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { connect } from "react-redux";
 import { getTasks } from "../../store/action";
-import styles from "./search.module.css";
+//import styles from "./search.module.css";
 
 const statusOptions = [
   {
@@ -165,36 +163,25 @@ function Search(props) {
           </Form>
         </Navbar.Collapse>
       </Navbar>
-      <Accordion defaultActiveKey="1">
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="secondary" eventKey="0">
-              Enhanced search
-            </Accordion.Toggle>
-          </Card.Header>
-          <Accordion.Collapse eventKey="0">
-            <Card.Body>
-              {dateOptions.map((item, index) => {
-                return (
-                  <div key={index} style={{ backgroundColor: "lightgray" }}>
-                    <div>{item.label}</div>
-                    <DatePicker
-                      className={styles.datePicker}
-                      selected={dates[item.value]}
-                      onChange={(date) => {
-                        setDates({
-                          ...dates,
-                          [item.value]: date,
-                        });
-                      }}
-                    />
-                  </div>
-                );
-              })}
-            </Card.Body>
-          </Accordion.Collapse>
-        </Card>
-      </Accordion>
+
+      {dateOptions.map((item, index) => {
+        return (
+          <div key={index} style={{ backgroundColor: "lightgray" }}>
+            <div> {item.label} </div>
+            <DatePicker
+              placeholderText="MM/DD/YYYY"
+              fixedHeight
+              selected={dates[item.value]}
+              onChange={(date) => {
+                setDates({
+                  ...dates,
+                  [item.value]: date,
+                });
+              }}
+            />
+          </div>
+        );
+      })}
     </>
   );
 }

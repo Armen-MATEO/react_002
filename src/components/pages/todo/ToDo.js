@@ -105,6 +105,7 @@ class ToDo extends PureComponent {
           <Row className="justify-content-center text-center">
             <Col sm={10} xs={12} md={8} lg={6}>
               <Button
+                className={styles.addButton}
                 variant="primary"
                 onClick={this.toggleNewTaskModal}
                 disabled={!!selectedTasks.size}

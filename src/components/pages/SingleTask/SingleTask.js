@@ -49,7 +49,7 @@ class SingleTask extends PureComponent {
             {!!task ? (
               <div
                 className={styles.card}
-                style={{ backgroundImage: `url(${singletask})` }}
+                /*style={{ backgroundImage: `url(${singletask})` }}*/
               >
                 <h2 className={styles.title}>{task.title}</h2>
                 <p className={styles.description}>

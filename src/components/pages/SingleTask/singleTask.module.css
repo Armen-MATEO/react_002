@@ -24,9 +24,13 @@
   font-family: Georgia, "Times New Roman", Times, serif;
   color: rgba(39, 26, 29, 0.931);
   text-align: center;
+  margin-top: 10px;
 }
 
 .wraper {
   display: grid;
   grid-gap: 1em;
+}
+.card{
+  background-color: #b87bc0;
 }
