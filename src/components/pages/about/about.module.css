@@ -3,6 +3,12 @@
   margin-left: 20px;
   font-weight: 500;
   font-size: medium;
+  background-color: #e6e6ff;
+  animation: mymove 5s infinite;
+  width: 550px;
+}
+@keyframes mymove {
+  50% {width: 1200px;}
 }
 .image {
   width: 90%;
