@@ -6,7 +6,7 @@ export default function About() {
     <div>
       <h6 className={styles.text}>
         <b>About page: </b>
-        <span style={{ backgroundColor: "#e6e6ff" }}>
+        <span >
           with this page you can organise your timeline and agenda.
         </span>
       </h6>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Styles from "./contact.module.css";
-
 import contact from "../../../assets/contact.jpg";
 const defaultValues = {
   name: "",
@@ -30,9 +29,8 @@ function Contact() {
 
   return (
     <div className={Styles.color}>
-      
       <input
-      className={Styles.input}
+        className={Styles.input}
         type="text"
         placeholder="Your name"
         value={values.name}
@@ -49,7 +47,7 @@ function Contact() {
         onChange={handleChange}
       />
       <input
-      className={Styles.input}
+        className={Styles.input}
         type="phone"
         name="phone"
         placeholder="Your phone"
@@ -57,18 +55,20 @@ function Contact() {
         onChange={handleChange}
       />
 
-      <textarea
-        className={Styles.textarea}
-        placeholder="Your message"
-        name="message"
-        onChange={handleChange}
-        value={values.message}
-      ></textarea>
+      <div>
+        <textarea
+          className={Styles.textarea}
+          placeholder="Your message"
+          name="message"
+          onChange={handleChange}
+          value={values.message}
+        ></textarea>
+      </div>
 
-      <button
-      className={Styles.button} 
-      onClick={send}>Send</button>
-      <img src = {contact} alt="contact" className={Styles.img}/>
+      <button type="button" className={Styles.button} onClick={send}>
+        Send
+      </button>
+      <img src={contact} alt="contact" className={Styles.img} />
     </div>
   );
 }
