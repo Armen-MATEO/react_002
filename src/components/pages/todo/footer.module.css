@@ -1,8 +1,17 @@
 .footer {
     display: flex;
     justify-content: center;
-    padding: 5px;
-    background-color: #45a1ff;
-    color: #fff;
+    padding: 10px;
+    background-color: #8ffaa6;
+    color: black;
+    font-size: medium;
+    font-weight:600;
+    font-family: cursive;
     margin-top: 130px;
+    
+}
+.icon {
+    z-index: 1000;
+    margin-left: 20px;
+    
 }

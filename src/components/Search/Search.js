@@ -116,7 +116,7 @@ function Search(props) {
 
   return (
     <>
-      <Navbar bg="secondary" expand="lg">
+      <Navbar bg="warning"  variant= "light" expand="lg">
         <Navbar.Brand>Search/Sort/Filter</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

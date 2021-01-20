@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Styles from "./contact.module.css";
 import contact from "../../../assets/contact.jpg";
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
+
 const defaultValues = {
   name: "",
   email: "",
@@ -23,8 +27,34 @@ function Contact() {
   };
 
   const send = () => {
-    console.log("values", values);
-    setValues(defaultValues);
+    //console.log("values", values);
+    const body = JSON.stringify(values);
+    
+    
+    fetch(`${apiUrl}/form`, {
+      
+    method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: body,
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.error) {
+          throw response.error;
+          
+        }
+       console.log(response);
+       setValues(defaultValues);
+        
+      })
+      .catch((error) => {
+        console.log("error", error);
+        
+      });
+
+       //setValues(defaultValues);
   };
 
   return (
