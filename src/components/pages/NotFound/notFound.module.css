@@ -1,0 +1,12 @@
+.pic {
+  display: flex;
+  flex-direction: row;
+}
+.container {
+  display: grid;
+}
+.image {
+  display: grid;
+  height: 68%;
+  width: auto;
+}

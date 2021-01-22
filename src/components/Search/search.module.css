@@ -1,0 +1,22 @@
+.input {
+    margin-right: 50px;
+    padding: 5px;
+    
+}
+.box{
+    display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.search{
+   margin-bottom:  150px;
+   font-family:sans-serif;
+   font-size: x-large;
+}
+.drop{
+    margin-bottom: 150px;
+    font-family: sans-serif;
+    font-size: large;
+    margin-left: 40px;
+}

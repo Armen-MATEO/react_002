@@ -44,3 +44,16 @@
 .color {
   background-color: #ccc5ab;
 }
+.asterik {
+  color: red;
+  font-size:x-large;
+}
+.asterikBlack{
+  color: black;
+  font-size: x-large;
+}
+.text {
+  margin-left: 50px;
+  font-size: large;
+  font-family: sans-serif;
+}

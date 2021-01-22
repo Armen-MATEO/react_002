@@ -1,106 +1,128 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { sendFormMessage } from "../../../store/action";
 import Styles from "./contact.module.css";
 import contact from "../../../assets/contact.jpg";
 
-const apiUrl = process.env.REACT_APP_API_URL;
+class Contact extends React.Component {
+  state = {
+    form: true,
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  };
 
+  componentDidUpdate(prevProps) {
+    if (!prevProps.sendFormSuccess && this.props.sendFormSuccess) {
+      this.setState({
+        name: "",
+        email: "",
+        message: "",
+        phone: "",
+        form: false,
+      });
+    }
+  }
 
-const defaultValues = {
-  name: "",
-  email: "",
-  phone: "",
-  message: "",
-};
+  check = () => {
+    if (this.state.name && this.state.email && this.state.message) {
+      this.setState({
+        form: false,
+      });
+    }
+  };
 
-function Contact() {
-  const [values, setValues] = useState(defaultValues);
-
-  // const handleChange = (value, name)=>{
-
-  // };
-  //                       event
-  const handleChange = ({ target: { name, value } }) => {
-    setValues({
-      ...values,
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({
       [name]: value,
     });
+    this.check();
   };
 
-  const send = () => {
-    //console.log("values", values);
-    const body = JSON.stringify(values);
-    
-    
-    fetch(`${apiUrl}/form`, {
-      
-    method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: body,
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.error) {
-          throw response.error;
-          
-        }
-       console.log(response);
-       setValues(defaultValues);
-        
-      })
-      .catch((error) => {
-        console.log("error", error);
-        
+  send = (e) => {
+    e.preventDefault();
+    const { name, email, message } = this.state;
+    if (!name || !email || !message) {
+      this.setState({
+        form: true,
       });
+      return;
+    }
+    const formText = {
+      name,
+      email,
+      message,
+    };
 
-       //setValues(defaultValues);
+    this.props.sendFormMessage(formText);
   };
 
-  return (
-    <div className={Styles.color}>
-      <input
-        className={Styles.input}
-        type="text"
-        placeholder="Your name"
-        value={values.name}
-        name="name"
-        onChange={handleChange}
-        // onChange={(event)=>handleChange(event.target.value, 'name')}
-      />
-      <input
-        className={Styles.input}
-        type="email"
-        name="email"
-        placeholder="Your email"
-        value={values.email}
-        onChange={handleChange}
-      />
-      <input
-        className={Styles.input}
-        type="phone"
-        name="phone"
-        placeholder="Your phone"
-        value={values.phone}
-        onChange={handleChange}
-      />
+  render() {
+    return (
+      <div className={Styles.color}>
+        <input
+          className={Styles.input}
+          type="text"
+          placeholder="Your name"
+          value={this.state.name}
+          name="name"
+          required
+          onChange={this.handleChange}
+          // onChange={(event)=>handleChange(event.target.value, 'name')}
+        />
+        <span className={Styles.asterik}>*</span>
+        <input
+          className={Styles.input}
+          type="email"
+          name="email"
+          placeholder="Your email"
+          required
+          value={this.state.email}
+          onChange={this.handleChange}
+        />
+        <span className={Styles.asterik}>*</span>
+        <input
+          className={Styles.input}
+          type="phone"
+          name="phone"
+          placeholder="Your phone"
+          required
+          value={this.state.phone}
+          onChange={this.handleChange}
+        />
+        <span className={Styles.asterikBlack}>*</span>
+        <div>
+          <textarea
+            className={Styles.textarea}
+            placeholder="Your message"
+            name="message"
+            type="text"
+            required
+            onChange={this.handleChange}
+            value={this.state.message}
+          ></textarea>
+          <span className={Styles.asterik}>
+            *<span className={Styles.text}>*required</span>{" "}
+          </span>
+        </div>
 
-      <div>
-        <textarea
-          className={Styles.textarea}
-          placeholder="Your message"
-          name="message"
-          onChange={handleChange}
-          value={values.message}
-        ></textarea>
+        <button type="button" className={Styles.button} onClick={this.send}>
+          Send
+        </button>
+        <img src={contact} alt="contact" className={Styles.img} />
       </div>
-
-      <button type="button" className={Styles.button} onClick={send}>
-        Send
-      </button>
-      <img src={contact} alt="contact" className={Styles.img} />
-    </div>
-  );
+    );
+  }
 }
+const mapStateToProps = (state) => {
+  return {
+    sendFormSuccess: state.sendFormSuccess,
+  };
+};
 
-export default Contact;
+const mapDispatchToProps = {
+  sendFormMessage,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

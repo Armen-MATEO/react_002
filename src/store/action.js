@@ -49,7 +49,7 @@ export function addTask(data) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
 
-    request(`${apiUrl}/task`, 'POST', data)
+    request(`${apiUrl}/task`, "POST", data)
       .then((res) => {
         dispatch({ type: actionTypes.ADD_TASK_SUCCESS, task: res });
       })
@@ -63,7 +63,7 @@ export function removeTask(taskId, from = "tasks") {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
 
-    request(`${apiUrl}/task/${taskId}`, 'DELETE')
+    request(`${apiUrl}/task/${taskId}`, "DELETE")
       .then((res) => {
         dispatch({ type: actionTypes.REMOVE_TASK_SUCCESS, taskId, from });
       })
@@ -77,7 +77,7 @@ export function removeSelected(taskIds) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
 
-    request(`${apiUrl}/task`, 'PATCH', {tasks: taskIds})
+    request(`${apiUrl}/task`, "PATCH", { tasks: taskIds })
       .then(() => {
         dispatch({ type: actionTypes.REMOVE_SELECTED_TASKS_SUCCESS, taskIds });
       })
@@ -91,7 +91,7 @@ export function editTask(data, from) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
 
-    request(`${apiUrl}/task/${data._id}`, 'PUT', data)
+    request(`${apiUrl}/task/${data._id}`, "PUT", data)
       .then((editedTask) => {
         dispatch({
           type: actionTypes.EDIT_TASK_SUCCESS,
@@ -104,17 +104,41 @@ export function editTask(data, from) {
       });
   };
 }
-export function changeTaskStatus(id, data, from){
-  return (dispatch)=>{
-      dispatch({type: actionTypes.LOADING});
+export function changeTaskStatus(id, data, from) {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.LOADING });
 
-      request(`${apiUrl}/task/${id}`, 'PUT', data)
-      .then((editedTask) =>{
-          dispatch({type: actionTypes.CHANGE_TASK_STATUS_SUCCESS, task: editedTask, from});
+    request(`${apiUrl}/task/${id}`, "PUT", data)
+      .then((editedTask) => {
+        dispatch({
+          type: actionTypes.CHANGE_TASK_STATUS_SUCCESS,
+          task: editedTask,
+          from,
+        });
       })
-      .catch(err =>{
-          dispatch({type: actionTypes.ERROR, error: err.message});
+      .catch((err) => {
+        dispatch({ type: actionTypes.ERROR, error: err.message });
       });
+  };
+}
 
-  }
+export function sendFormMessage(formText) {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.LOADING });
+    const url = `${apiUrl}/form`;
+    request(url, "POST", formText)
+      .then((res) => {
+        dispatch({
+          type: actionTypes.SEND_FORM_SUCCESS,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: actionTypes.ERROR,
+
+          error:
+            "something goes wrong!, please check your forms or your internet conection ",
+        });
+      });
+  };
 }
