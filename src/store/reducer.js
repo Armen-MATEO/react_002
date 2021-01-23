@@ -25,6 +25,7 @@ const reducer = (state = defaultState, action) => {
         removeTasksSuccess: false,
         removeTaskSuccess: false,
         editTaskSuccess: false,
+        sendFormSuccess: false,
       };
     }
 

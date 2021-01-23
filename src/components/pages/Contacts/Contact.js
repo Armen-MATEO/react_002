@@ -43,6 +43,7 @@ class Contact extends React.Component {
   send = (e) => {
     e.preventDefault();
     const { name, email, message } = this.state;
+    
     if (!name || !email || !message) {
       this.setState({
         form: true,
