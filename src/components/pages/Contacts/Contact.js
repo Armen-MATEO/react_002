@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { sendFormMessage } from "../../../store/action";
 import Styles from "./contact.module.css";
 import contact from "../../../assets/contact.jpg";
+import { Form, Button } from "react-bootstrap";
 
 class Contact extends React.Component {
   state = {
     form: true,
     name: "",
     email: "",
-    phone: "",
     message: "",
   };
 
@@ -19,7 +19,7 @@ class Contact extends React.Component {
         name: "",
         email: "",
         message: "",
-        phone: "",
+
         form: false,
       });
     }
@@ -60,58 +60,55 @@ class Contact extends React.Component {
 
   render() {
     return (
-      <div className={Styles.color}>
-        <input
-          className={Styles.input}
-          type="text"
-          placeholder="Your name"
-          value={this.state.name}
-          name="name"
-          required
-          onChange={this.handleChange}
-          // onChange={(event)=>handleChange(event.target.value, 'name')}
-        />
-        <span className={Styles.asterik}>*</span>
-        <input
-          className={Styles.input}
-          type="email"
-          name="email"
-          placeholder="Your email"
-          required
-          value={this.state.email}
-          onChange={this.handleChange}
-        />
-        <span className={Styles.asterik}>*</span>
-        <input
-          className={Styles.input}
-          type="phone"
-          name="phone"
-          placeholder="Your phone"
-          required
-          value={this.state.phone}
-          onChange={this.handleChange}
-        />
-        <span className={Styles.asterikBlack}>*</span>
-        <div>
-          <textarea
-            className={Styles.textarea}
-            placeholder="Your message"
+      <>
+        <Form inline className={Styles.color}>
+          
+        
+          <Form.Control
+            className={Styles.input}
+            type="text"
+            placeholder="Your name"
+            value={this.state.name}
+            name="name"
+            required
+            onChange={this.handleChange}
+          />
+          
+
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            className={Styles.input}
+            name="email"
+            required
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+
+          <Form.Control
+            as="textarea"
+            rows={2}
+            placeholder=" message"
             name="message"
             type="text"
             required
             onChange={this.handleChange}
             value={this.state.message}
-          ></textarea>
-          <span className={Styles.asterik}>
-            *<span className={Styles.text}>*required</span>{" "}
-          </span>
-        </div>
+            className={Styles.textArea}
+          />
+          
 
-        <button type="button" className={Styles.button} onClick={this.send}>
-          Send
-        </button>
-        <img src={contact} alt="contact" className={Styles.img} />
-      </div>
+          <Button
+            variant="primary"
+            type="submit"
+            className={Styles.but}
+            onClick={this.send}
+          >
+            Submit
+          </Button>
+          <img src={contact} alt="contact" className={Styles.img} />
+        </Form>
+      </>
     );
   }
 }

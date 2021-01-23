@@ -11,9 +11,12 @@
   border-radius: 20px;
   margin-left: 10px;
   margin-top: 7px;
+  padding-right: 40px;
   border: none;
+
   display: inline-block;
 }
+
 .img {
   width: 100%;
   height: auto;
@@ -42,13 +45,13 @@
   background: rgb(94 125 127);
 }
 .color {
-  background-color: #ccc5ab;
+  background-color: #f8f3ec;
 }
 .asterik {
   color: red;
-  font-size:x-large;
+  font-size: x-large;
 }
-.asterikBlack{
+.asterikBlack {
   color: black;
   font-size: x-large;
 }
@@ -56,4 +59,19 @@
   margin-left: 50px;
   font-size: large;
   font-family: sans-serif;
+}
+.textArea {
+  margin-left: 10px;
+  width: max-content;
+  margin-top: 5px;
+  margin-bottom: 1px;
+
+  border-radius: 20px;
+  border: none;
+  display: inline-block;
+  padding-right: 100px;
+}
+.but {
+  margin-left: 20px;
+  margin-top: 5px;
 }

@@ -9,6 +9,8 @@ import {
   Button,
   
   
+  
+  
 } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -169,6 +171,7 @@ function Search(props) {
         {dateOptions.map((item, index) => {
         return (
           <div key={index} >
+            
             <div> {item.label} </div>
             <DatePicker
               className={styles.box}
@@ -182,13 +185,14 @@ function Search(props) {
                 });
               }}
             />
+            
           </div>
         );
       })}
       
       
       
-      </div>
+    </div>
 
      
 
@@ -215,24 +219,7 @@ function Search(props) {
      
       </Navbar>
 
-   {/*   {dateOptions.map((item, index) => {
-        return (
-          <div key={index} style={{ backgroundColor: "lightgray" }}>
-            <div> {item.label} </div>
-            <DatePicker
-              placeholderText="MM/DD/YYYY"
-              fixedHeight
-              selected={dates[item.value]}
-              onChange={(date) => {
-                setDates({
-                  ...dates,
-                  [item.value]: date,
-                });
-              }}
-            />
-          </div>
-        );
-      })}   */}
+   
     </>
   );
 }
