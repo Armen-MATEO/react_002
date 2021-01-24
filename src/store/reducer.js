@@ -10,6 +10,7 @@ const defaultState = {
   removeTasksSuccess: false,
   removeTaskSuccess: false,
   loading: false,
+  sendFormSuccess: false,
 };
 
 const reducer = (state = defaultState, action) => {
@@ -24,6 +25,7 @@ const reducer = (state = defaultState, action) => {
         removeTasksSuccess: false,
         removeTaskSuccess: false,
         editTaskSuccess: false,
+        sendFormSuccess: false,
       };
     }
 
@@ -120,26 +122,26 @@ const reducer = (state = defaultState, action) => {
 
     case actionTypes.CHANGE_TASK_STATUS_SUCCESS: {
       let message;
-        if(action.task.status === 'done'){
-          message = 'Congratulations, the task completed 🎉!!!';
-        }
-        else {
-          message = 'The task is active now !!!';
-        }
+      if (action.task.status === "done") {
+        message = "Congratulations, the task completed 🎉!!!";
+      } else {
+        message = "The task is active now !!!";
+      }
 
-      if (action.from === 'single') {
+      if (action.from === "single") {
         return {
           ...state,
           task: action.task,
           loading: false,
           editTaskSuccess: true,
           successMessage: message,
-        }
-      }
-      else {
+        };
+      } else {
         const tasks = [...state.tasks];
 
-        const foundTaskIndex = tasks.findIndex((task) => task._id === action.task._id);
+        const foundTaskIndex = tasks.findIndex(
+          (task) => task._id === action.task._id
+        );
         tasks[foundTaskIndex] = action.task;
         return {
           ...state,
@@ -147,7 +149,7 @@ const reducer = (state = defaultState, action) => {
           loading: false,
           editTaskSuccess: true,
           successMessage: message,
-        }
+        };
       }
     }
 
@@ -158,6 +160,16 @@ const reducer = (state = defaultState, action) => {
         loading: false,
       };
     }
+
+    case actionTypes.SEND_FORM_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        sendFormSuccess: true,
+        successMessage: "your form has been successfully submitted!",
+      };
+    }
+
     default:
       return state;
   }

@@ -1,0 +1,25 @@
+.input {
+    margin-right: 50px;
+    
+    
+}
+.box{
+    display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 10%;
+  width: 70%;
+  margin-bottom: 4px;
+}
+.search{
+   
+   font-family:sans-serif;
+   font-size: large;
+}
+.drop{
+    
+    font-family: sans-serif;
+    font-size: large;
+    margin-left: 40px;
+}

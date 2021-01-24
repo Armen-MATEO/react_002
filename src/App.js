@@ -7,16 +7,13 @@ import SingleTask from "./components/pages/SingleTask/SingleTask";
 import NotFound from "./components/pages/NotFound/NotFound";
 import NavMenu from "./components/NavMenu/NavMenu";
 import { Route, Switch, Redirect } from "react-router-dom";
-//import RefDemo from './exercize/RefDemo';
-import LifeCycles from "./exercize/lifeCycles/LifeCycles";
 import Contact from "./components/pages/Contacts/Contact";
-import 'react-toastify/dist/ReactToastify.css';
-import Spinner from './components/Spinner/Spinner';
-import { ToastContainer, toast } from 'react-toastify';
-import { connect } from 'react-redux';
+import "react-toastify/dist/ReactToastify.css";
+import Spinner from "./components/Spinner/Spinner";
+import { ToastContainer, toast } from "react-toastify";
+import { connect } from "react-redux";
 
 function App(props) {
-  
   const routes = [
     {
       path: "/",
@@ -37,18 +34,12 @@ function App(props) {
     },
 
     {
-      path: "/demo",
-      /*component: RefDemo*/
-      component: LifeCycles,
-    },
-
-    {
       path: "/404",
       component: NotFound,
     },
   ];
 
-  const {errorMessage, successMessage, loading} = props;
+  const { errorMessage, successMessage, loading } = props;
 
   if (errorMessage) {
     toast.error(errorMessage);
@@ -81,9 +72,8 @@ function App(props) {
         <Route path="/404" exact component={NotFound} />
         <Redirect to="/404" />
  </Switch>*/}
-    
-    
-    <ToastContainer
+
+      <ToastContainer
         position="bottom-left"
         autoClose={3000}
         hideProgressBar={false}
@@ -96,7 +86,6 @@ function App(props) {
       />
 
       {loading && <Spinner />}
-    
     </div>
   );
 }
@@ -105,7 +94,7 @@ const mapStateToProps = (state) => {
   return {
     errorMessage: state.errorMessage,
     successMessage: state.successMessage,
-    loading: state.loading
+    loading: state.loading,
   };
 };
 

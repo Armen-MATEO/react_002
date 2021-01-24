@@ -7,12 +7,16 @@ import {
   FormControl,
   Form,
   Button,
+  
+  
+  
+  
 } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { connect } from "react-redux";
 import { getTasks } from "../../store/action";
-//import styles from "./search.module.css";
+import styles from "./search.module.css";
 
 const statusOptions = [
   {
@@ -116,12 +120,12 @@ function Search(props) {
 
   return (
     <>
-      <Navbar bg="secondary" expand="lg">
-        <Navbar.Brand>Search/Sort/Filter</Navbar.Brand>
+      <Navbar bg="warning"  variant= "light" expand="lg">
+        <Navbar.Brand className={styles.search}>Search/Sort/Filter</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <NavDropdown title={status.value ? status.label : "Status"}>
+            <NavDropdown className={styles.drop} title={status.value ? status.label : "Status"}>
               {statusOptions.map((item, index) => {
                 return (
                   <NavDropdown.Item
@@ -135,7 +139,7 @@ function Search(props) {
               })}
             </NavDropdown>
 
-            <NavDropdown title={sort.value ? sort.label : "Sort"}>
+            <NavDropdown className={styles.drop} title={sort.value ? sort.label : "Sort"}>
               {sortOptions.map((item, index) => {
                 return (
                   <NavDropdown.Item
@@ -149,6 +153,53 @@ function Search(props) {
               })}
             </NavDropdown>
           </Nav>
+
+
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+          <div className={styles.input}>
+       
+        {dateOptions.map((item, index) => {
+        return (
+          <div key={index} >
+            
+            <div> {item.label} </div>
+            <DatePicker
+              className={styles.box}
+              placeholderText="MM/DD/YYYY"
+              fixedHeight
+              selected={dates[item.value]}
+              onChange={(date) => {
+                setDates({
+                  ...dates,
+                  [item.value]: date,
+                });
+              }}
+            />
+            
+          </div>
+        );
+      })}
+      
+      
+      
+    </div>
+
+     
+
+
+
+
+
           <Form inline>
             <FormControl
               type="text"
@@ -162,26 +213,13 @@ function Search(props) {
             </Button>
           </Form>
         </Navbar.Collapse>
+      
+       
+     
+     
       </Navbar>
 
-      {dateOptions.map((item, index) => {
-        return (
-          <div key={index} style={{ backgroundColor: "lightgray" }}>
-            <div> {item.label} </div>
-            <DatePicker
-              placeholderText="MM/DD/YYYY"
-              fixedHeight
-              selected={dates[item.value]}
-              onChange={(date) => {
-                setDates({
-                  ...dates,
-                  [item.value]: date,
-                });
-              }}
-            />
-          </div>
-        );
-      })}
+   
     </>
   );
 }

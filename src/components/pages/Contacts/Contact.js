@@ -1,76 +1,126 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { sendFormMessage } from "../../../store/action";
 import Styles from "./contact.module.css";
 import contact from "../../../assets/contact.jpg";
-const defaultValues = {
-  name: "",
-  email: "",
-  phone: "",
-  message: "",
-};
+import { Form, Button } from "react-bootstrap";
 
-function Contact() {
-  const [values, setValues] = useState(defaultValues);
+class Contact extends React.Component {
+  state = {
+    form: true,
+    name: "",
+    email: "",
+    message: "",
+  };
 
-  // const handleChange = (value, name)=>{
+  componentDidUpdate(prevProps) {
+    if (!prevProps.sendFormSuccess && this.props.sendFormSuccess) {
+      this.setState({
+        name: "",
+        email: "",
+        message: "",
 
-  // };
-  //                       event
-  const handleChange = ({ target: { name, value } }) => {
-    setValues({
-      ...values,
+        form: false,
+      });
+    }
+  }
+
+  check = () => {
+    if (this.state.name && this.state.email && this.state.message) {
+      this.setState({
+        form: false,
+      });
+    }
+  };
+
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({
       [name]: value,
     });
+    this.check();
   };
 
-  const send = () => {
-    console.log("values", values);
-    setValues(defaultValues);
+  send = (e) => {
+    e.preventDefault();
+    const { name, email, message } = this.state;
+    
+    if (!name || !email || !message) {
+      this.setState({
+        form: true,
+      });
+      return;
+    }
+    const formText = {
+      name,
+      email,
+      message,
+    };
+
+    this.props.sendFormMessage(formText);
   };
 
-  return (
-    <div className={Styles.color}>
-      <input
-        className={Styles.input}
-        type="text"
-        placeholder="Your name"
-        value={values.name}
-        name="name"
-        onChange={handleChange}
-        // onChange={(event)=>handleChange(event.target.value, 'name')}
-      />
-      <input
-        className={Styles.input}
-        type="email"
-        name="email"
-        placeholder="Your email"
-        value={values.email}
-        onChange={handleChange}
-      />
-      <input
-        className={Styles.input}
-        type="phone"
-        name="phone"
-        placeholder="Your phone"
-        value={values.phone}
-        onChange={handleChange}
-      />
+  render() {
+    return (
+      <>
+        <Form inline className={Styles.color}>
+          
+        
+          <Form.Control
+            className={Styles.input}
+            type="text"
+            placeholder="Your name"
+            value={this.state.name}
+            name="name"
+            required
+            onChange={this.handleChange}
+          />
+          
 
-      <div>
-        <textarea
-          className={Styles.textarea}
-          placeholder="Your message"
-          name="message"
-          onChange={handleChange}
-          value={values.message}
-        ></textarea>
-      </div>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            className={Styles.input}
+            name="email"
+            required
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
 
-      <button type="button" className={Styles.button} onClick={send}>
-        Send
-      </button>
-      <img src={contact} alt="contact" className={Styles.img} />
-    </div>
-  );
+          <Form.Control
+            as="textarea"
+            rows={2}
+            placeholder=" message"
+            name="message"
+            type="text"
+            required
+            onChange={this.handleChange}
+            value={this.state.message}
+            className={Styles.textArea}
+          />
+          
+
+          <Button
+            variant="primary"
+            type="submit"
+            className={Styles.but}
+            onClick={this.send}
+          >
+            Submit
+          </Button>
+          <img src={contact} alt="contact" className={Styles.img} />
+        </Form>
+      </>
+    );
+  }
 }
+const mapStateToProps = (state) => {
+  return {
+    sendFormSuccess: state.sendFormSuccess,
+  };
+};
 
-export default Contact;
+const mapDispatchToProps = {
+  sendFormMessage,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);
